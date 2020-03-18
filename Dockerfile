@@ -1,5 +1,7 @@
 FROM debian:stretch-slim
 
+LABEL maintainer="Werkspot <technology@werkspot.com>"
+
 WORKDIR /app
 
 RUN \
@@ -8,7 +10,7 @@ RUN \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
-ARG THUMBOR_VERSION=6.7.0
+ARG THUMBOR_VERSION=6.7.5
 RUN pip install thumbor==${THUMBOR_VERSION} tc_prometheus tc_aws
 RUN /usr/local/bin/thumbor-config > /app/thumbor.conf
 
